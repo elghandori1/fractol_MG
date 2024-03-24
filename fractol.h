@@ -34,7 +34,7 @@ typedef struct s_data
 	int				bpp;
 	int				line_length;
 	int				offset;
-	int				indean;
+	int				endian;
 	double			min;
 	double			max;
 	int				iteration;
@@ -72,9 +72,10 @@ void				mng_window(t_data *mlx);
 void				deful(t_data *mlx, char **str);
 void				ft_generetor(char **str, t_data *mlx);
 void				destroyer(t_data *mlx);
-void				ft_putchar(char c);
 void				ft_putnbr(int n);
 int					k_color(int key, t_data *mlx);
 int					pars_params(int ac, char **arg);
+void				julia(double real, double imgn, t_data *data);
+void				colors(t_data *mlx);
 
 #endif

@@ -1,7 +1,7 @@
 
 NAME = fractol
 
-SRC = mandelbrot.c generetor.c events.c main.c tools.c parcing.c
+SRC = mandelbrot.c generetor.c events.c main.c tools.c parcing.c julia.c
 
 MLX =  -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 

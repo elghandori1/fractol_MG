@@ -35,6 +35,7 @@ void	destroyer(t_data *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_destroy_display(mlx->mlx);
 	mlx_destroy_window(mlx->mlx, mlx->window);
+	free(mlx->mlx);
 	exit(0);
 }
 
@@ -54,7 +55,7 @@ int	main(int ac, char **av)
 	if (!data.img)
 		destroyer(&data);
 	data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_length,
-			&data.indean);
+			&data.endian);
 	if (!data.addr)
 		destroyer(&data);
 	deful(&data, av);
