@@ -1,24 +1,28 @@
+
 NAME = fractol
 
-SRC = main.c fractol_tools.c
+SRC = mandelbrot.c generetor.c events.c main.c tools.c parcing.c
 
-MLX =-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX =  -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 
-OBJ = $(SRC:.c=.o)
+CFLAGS = -Wall -Werror -Wextra
 
 CC = cc
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+HEADER = fractol.h
+
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+${NAME}: ${SRC} ${HEADER}
+		${CC} ${SRC} ${CFLAGS} -o ${NAME} $(MLX)
+
+clean:
+	rm -rf ${NAME}
+	
+fclean:
+	rm -rf ${NAME} 
 
 all: ${NAME}
 
-${NAME}: ${OBJ}
-		${CC} -Wall -Werror -Wextra ${OBJ} $(MLX) -o fractol
-clean:
-	rm -rf ${OBJ}
-	
-fclean:clean
-	rm -rf ${NAME}
-	
 re: fclean all
