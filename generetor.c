@@ -31,34 +31,17 @@ void	put_pixel(t_data *data, int x, int y, unsigned int color)
 	*(unsigned int *)ofst = color;
 }
 
+void	colors(t_data *mlx)
+{
+	mlx->red = 0 + mlx->r_value;
+	mlx->blue = 0 + mlx->b_value;
+	mlx->green = 0 + mlx->g_value;
+}
+
 void	ft_generetor(char **str, t_data *mlx)
 {
 	if (str[1][0] == '1')
 		mandelbrot(mlx);
-}
-
-double	ft_atod(const char *str)
-{
-	double	n;
-	size_t	i;
-	double	n1;
-	double	it;
-
-	it = 10.0;
-	i = 0;
-	n = 0;
-	n1 = (double)ft_atoi(str);
-	while (str[i] != '.')
-		i++;
-	if (str[i] == '.')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9' && str[i])
-	{
-		n += (double)(str[i] - 48) / it;
-		i++;
-		it *= 10;
-	}
-	if (str[0] == '-')
-		n *= -1;
-	return (n + n1);
+	else if (str[1][0] == '2')
+		julia(ft_atod(str[2]), ft_atod(str[3]), mlx);
 }

@@ -12,16 +12,14 @@
 
 #include "fractol.h"
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void	ft_putnbr(int n)
 {
+	char	c;
+
 	if (n < 0)
 	{
-		ft_putchar('-');
+		c = '-';
+		write(1, &c, 1);
 		n = -(n);
 	}
 	if (n >= 10)
@@ -30,7 +28,10 @@ void	ft_putnbr(int n)
 		ft_putnbr(n % 10);
 	}
 	else
-		ft_putchar(n + 48);
+	{
+		c = n + 48;
+		write(1, &c, 1);
+	}
 }
 
 int	ft_isdigit(int digit)
@@ -67,4 +68,30 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (number * sign);
+}
+
+double	ft_atod(const char *str)
+{
+	double	n;
+	size_t	i;
+	double	n1;
+	double	it;
+
+	it = 10.0;
+	i = 0;
+	n = 0;
+	n1 = (double)ft_atoi(str);
+	while (str[i] != '.')
+		i++;
+	if (str[i] == '.')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9' && str[i])
+	{
+		n += (double)(str[i] - 48) / it;
+		i++;
+		it *= 10;
+	}
+	if (str[0] == '-')
+		n *= -1;
+	return (n + n1);
 }
