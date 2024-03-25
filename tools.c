@@ -55,13 +55,20 @@ size_t	ft_strlen(const char *theString)
 
 int	ft_atoi(const char *str)
 {
-	int			sign;
 	long long	number;
 	size_t		i;
+	int			sign;
 
 	sign = 1;
 	number = 0;
 	i = 0;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		number = number * 10 + (str[i] - '0');
@@ -81,8 +88,6 @@ double	ft_atod(const char *str)
 	i = 0;
 	n = 0;
 	n1 = (double)ft_atoi(str);
-	while (str[i] != '.')
-		i++;
 	if (str[i] == '.')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9' && str[i])

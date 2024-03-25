@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generetor.c                                        :+:      :+:    :+:   */
+/*   tools2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-gha <moel-gha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -36,12 +36,4 @@ void	colors(t_data *mlx)
 	mlx->red = 0 + mlx->r_value;
 	mlx->blue = 0 + mlx->b_value;
 	mlx->green = 0 + mlx->g_value;
-}
-
-void	ft_generetor(char **str, t_data *mlx)
-{
-	if (str[1][0] == '1')
-		mandelbrot(mlx);
-	else if (str[1][0] == '2')
-		julia(ft_atod(str[2]), ft_atod(str[3]), mlx);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-gha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 00:03:03 by moel-gha          #+#    #+#             */
-/*   Updated: 2024/03/24 00:03:05 by moel-gha         ###   ########.fr       */
+/*   Created: 2024/03/25 11:11:11 by moel-gha          #+#    #+#             */
+/*   Updated: 2024/03/25 11:11:13 by moel-gha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../fractol.h"
 
-void	deful(t_data *mlx, char **str)
+void	deful_bn(t_data *mlx, char **str)
 {
 	mlx->red = 0;
 	mlx->blue = 0;
@@ -39,20 +39,20 @@ void	destroyer(t_data *mlx)
 	exit(0);
 }
 
-void	ft_generetor(char **str, t_data *mlx)
+void	ft_generetor_bn(t_data *mlx)
 {
-	if (str[1][0] == '1')
-		mandelbrot(mlx);
-	else if (str[1][0] == '2')
-		julia(ft_atod(str[2]), ft_atod(str[3]), mlx);
+	burning(mlx);
 }
 
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if ((ac < 2 || ac > 4) || pars_params(ac, av))
-		ft_error();
+	if (ac > 1)
+	{
+		write(1, "takes no args!!\n", 16);
+		exit(0);
+	}
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		destroyer(&data);
@@ -66,12 +66,9 @@ int	main(int ac, char **av)
 			&data.endian);
 	if (!data.addr)
 		destroyer(&data);
-	deful(&data, av);
+	deful_bn(&data, av);
 	mng_window(&data);
-	if (av[1][0] == '1')
-		ft_generetor(av, &data);
-	else if (av[1][0] == '2')
-		ft_generetor(av, &data);
+	ft_generetor_bn(&data);
 	mlx_loop(data.mlx);
 	return (0);
 }
