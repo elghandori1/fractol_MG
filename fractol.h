@@ -77,5 +77,7 @@ int					k_color(int key, t_data *mlx);
 int					pars_params(int ac, char **arg);
 void				julia(double real, double imgn, t_data *data);
 void				colors(t_data *mlx);
+void				ft_generetor_bn(t_data *mlx);
+void				burning(t_data *data);
 
 #endif

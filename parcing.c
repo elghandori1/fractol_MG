@@ -45,6 +45,8 @@ int	valid_num(char *str)
 
 	i = 0;
 	flag = 0;
+	if (str[i] == '.')
+		return (0);
 	while (str[i])
 	{
 		if (!(ft_isdigit(str[i]) || (i == 0 && (str[i] == '+'
