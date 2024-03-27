@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools2.c                                        :+:      :+:    :+:   */
+/*   tools_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moel-gha <moel-gha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moel-gha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 00:02:54 by moel-gha          #+#    #+#             */
-/*   Updated: 2024/03/24 00:12:54 by moel-gha         ###   ########.fr       */
+/*   Created: 2024/03/27 12:36:05 by moel-gha          #+#    #+#             */
+/*   Updated: 2024/03/27 12:36:08 by moel-gha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	ft_close(t_data *data)
+{
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->window);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	write(1, "closed\n", 8);
+	exit(0);
+	return (0);
+}
 
 double	scale(double n, double min, double max, double maximum)
 {
@@ -18,7 +29,7 @@ double	scale(double n, double min, double max, double maximum)
 }
 
 unsigned int	argb(unsigned int a, unsigned int r, unsigned int g,
-					unsigned int b)
+		unsigned int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
 }

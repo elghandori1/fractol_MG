@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../fractol.h"
 
 int	equa_julia(t_complex c_j, int x, int y, t_data *data)
 {

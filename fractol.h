@@ -19,7 +19,6 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 # define WIDTH 800
@@ -72,12 +71,15 @@ void				mng_window(t_data *mlx);
 void				deful(t_data *mlx, char **str);
 void				ft_generetor(char **str, t_data *mlx);
 void				destroyer(t_data *mlx);
-void				ft_putnbr(int n);
-int					k_color(int key, t_data *mlx);
 int					pars_params(int ac, char **arg);
 void				julia(double real, double imgn, t_data *data);
 void				colors(t_data *mlx);
-void				ft_generetor_bn(t_data *mlx);
+int					keyboard_bn(int key, t_data *data);
+int					zoom_bn(int cur, int x, int y, t_data *data);
+int					move_bn(int key, t_data *data);
+void				mng_window_bn(t_data *mlx);
+void				ft_generetor_bn(char **str, t_data *mlx);
+void				ft_initial(t_data *data);
 void				burning(t_data *data);
 
 #endif

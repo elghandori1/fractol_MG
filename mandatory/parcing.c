@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../fractol.h"
 
 void	ft_error(void)
 {
@@ -21,36 +21,17 @@ void	ft_error(void)
 	exit(1);
 }
 
-int	k_color(int key, t_data *mlx)
-{
-	if (key == XK_a)
-		return (mlx->r_value += 15, ft_generetor(mlx->fractal, mlx), 0);
-	else if (key == XK_s)
-		return (mlx->g_value += 15, ft_generetor(mlx->fractal, mlx), 0);
-	else if (key == XK_d)
-		return (mlx->b_value += 15, ft_generetor(mlx->fractal, mlx), 0);
-	if (key == XK_q)
-		return (mlx->r_value -= 15, ft_generetor(mlx->fractal, mlx), 0);
-	else if (key == XK_w)
-		return (mlx->g_value -= 15, ft_generetor(mlx->fractal, mlx), 0);
-	else if (key == XK_e)
-		return (mlx->b_value -= 15, ft_generetor(mlx->fractal, mlx), 0);
-	return (0);
-}
-
 int	valid_num(char *str)
 {
-	int	i;
-	int	flag;
-
+	int (i), (flag);
 	i = 0;
 	flag = 0;
-	if (str[i] == '.')
+	if ((str[i] == '.') || ((str[i] == '+' || str[i] == '-') \
+						&& str[i + 1] == '.'))
 		return (0);
 	while (str[i])
 	{
-		if (!(ft_isdigit(str[i]) || (i == 0 && (str[i] == '+'
-						|| str[i] == '-'))))
+		if (!(ft_isdigit(str[i]) || (str[0] == '+' || str[0] == '-')))
 		{
 			if (str[i] == '.')
 			{
@@ -64,6 +45,8 @@ int	valid_num(char *str)
 		}
 		i++;
 	}
+	if (str[i - 1] == '.' || str[i - 1] == '+' || str[i - 1] == '-' )
+		return (0);
 	return (1);
 }
 
