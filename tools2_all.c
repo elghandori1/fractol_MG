@@ -1,38 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   tools2_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-gha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 00:03:30 by moel-gha          #+#    #+#             */
-/*   Updated: 2024/03/24 00:03:36 by moel-gha         ###   ########.fr       */
+/*   Created: 2024/03/27 12:36:38 by moel-gha          #+#    #+#             */
+/*   Updated: 2024/03/27 12:36:40 by moel-gha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	ft_putnbr(int n)
-{
-	char	c;
-
-	if (n < 0)
-	{
-		c = '-';
-		write(1, &c, 1);
-		n = -(n);
-	}
-	if (n >= 10)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-	{
-		c = n + 48;
-		write(1, &c, 1);
-	}
-}
 
 int	ft_isdigit(int digit)
 {
@@ -86,15 +64,19 @@ double	ft_atod(const char *str)
 
 	it = 10.0;
 	i = 0;
-	n = 0;
+	n = 0.0;
 	n1 = (double)ft_atoi(str);
+	while (str[i] != '.' && str[i] != '\0')
+		i++;
 	if (str[i] == '.')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9' && str[i])
 	{
-		n += (double)(str[i] - 48) / it;
 		i++;
-		it *= 10;
+		while (str[i] >= '0' && str[i] <= '9' && str[i])
+		{
+			n += (double)(str[i] - 48) / it;
+			i++;
+			it *= 10;
+		}
 	}
 	if (str[0] == '-')
 		n *= -1;

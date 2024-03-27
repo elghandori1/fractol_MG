@@ -29,6 +29,16 @@ void	deful_bn(t_data *mlx, char **str)
 	mlx->zoom = 1;
 }
 
+void	ft_generetor_bn(char **str, t_data *mlx)
+{
+	if (str[1][0] == '1')
+		mandelbrot(mlx);
+	else if (str[1][0] == '2')
+		julia(ft_atod(str[2]), ft_atod(str[3]), mlx);
+	else if (str[1][0] == '3')
+		burning(mlx);
+}
+
 void	destroyer(t_data *mlx)
 {
 	perror("an error occured\n");
@@ -39,36 +49,38 @@ void	destroyer(t_data *mlx)
 	exit(0);
 }
 
-void	ft_generetor_bn(t_data *mlx)
+void	ft_initial(t_data *data)
 {
-	burning(mlx);
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		destroyer(data);
+	data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fractal");
+	if (!data->window)
+		destroyer(data);
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (!data->img)
+		destroyer(data);
+	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_length,
+			&data->endian);
+	if (!data->addr)
+		destroyer(data);
 }
 
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac > 1)
-	{
-		write(1, "takes no args!!\n", 16);
-		exit(0);
-	}
-	data.mlx = mlx_init();
-	if (!data.mlx)
-		destroyer(&data);
-	data.window = mlx_new_window(data.mlx, WIDTH, HEIGHT, "fractal");
-	if (!data.window)
-		destroyer(&data);
-	data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-	if (!data.img)
-		destroyer(&data);
-	data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_length,
-			&data.endian);
-	if (!data.addr)
-		destroyer(&data);
+	if ((ac < 2 || ac > 4) || pars_params(ac, av))
+		ft_error();
+	ft_initial(&data);
 	deful_bn(&data, av);
-	mng_window(&data);
-	ft_generetor_bn(&data);
+	mng_window_bn(&data);
+	if (av[1][0] == '1')
+		ft_generetor_bn(av, &data);
+	else if (av[1][0] == '2')
+		ft_generetor_bn(av, &data);
+	else if (av[1][0] == '3')
+		ft_generetor_bn(av, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

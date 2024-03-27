@@ -3,7 +3,7 @@ NAME = fractol
 
 NAME_BONUS = fractol_bonus
 
-SRC = mandelbrot.c events.c main.c tools.c tools2.c parcing.c julia.c
+SRC = ./mandatory/main.c ./mandatory/mandelbrot.c ./mandatory/julia.c ./mandatory/events.c ./mandatory/parcing.c tools_all.c tools2_all.c
 
 MLX =  -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 
@@ -11,7 +11,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 CC = cc
 
-SRC_BONUS = ./bonus/main_bonus.c ./bonus/burning_bonus.c ./bonus/events_bonus.c ./bonus/tools_bonus.c tools2.c
+SRC_BONUS = ./bonus/main_bonus.c ./bonus/burning_bonus.c ./bonus/mandelbrot_bonus.c ./bonus/julia_bonus.c  ./bonus/events_bonus.c ./bonus/parcing_bonus.c tools_all.c tools2_all.c
 
 OBJ = $(SRC:.c=.o)
 OBJSB = $(SRC_BONUS:.c=.o) 
@@ -32,4 +32,6 @@ clean:
 fclean:
 	@rm -rf $(NAME) $(NAME_BONUS)
 
-re: fclean all bonus
+re: fclean all
+
+reb: fclean bonus
