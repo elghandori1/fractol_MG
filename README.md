@@ -10,7 +10,7 @@ and manage keyboard and mouse events. It feels like this project is giving me th
 - Optimization: I will get a glimpse into the concept of optimization in computer graphics. This knowledge is crucial in creating efficient and high-performance graphical applications.
 - Event Handling: I will practice event handling, an important aspect of interactive software development. This includes responding to keyboard and mouse events to create an interactive user experience.
 
-# About my project :
+## About my project :
 My task is to develop a program that generates and exhibits various types of fractals. Users will have the ability to interact with these fractals, delving into different sets and experiencing the fusion of mathematics and computer graphics.
 It feels like I’m crafting an interactive world of fractals in the formats of Mandelbrot, Julia, and Burning Ship.
 
@@ -22,7 +22,7 @@ It feels like I’m crafting an interactive world of fractals in the formats of 
 ```bash
 ./fractol 2 −0.8 0.156
 ```
-- for part bonus i'm use the burning with specific number(3)
+- for part bonus i'm use the burning shape with specific number(3)
 ```bash
 ./fractol 3
 ```
