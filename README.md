@@ -15,15 +15,16 @@ My task is to develop a program that generates and exhibits various types of fra
 It feels like I’m crafting an interactive world of fractals in the formats of Mandelbrot, Julia, and Burning Ship.
 
 - for draw shape Mandelbrot use this commande :
-  ```shell
+```bash
 ./fractol 1
 ```
 - for draw shape julia use this format ./fractol 2 and specify the number <real> and <imaginary>
-  ```shell
+```bash
 ./fractol 2 −0.8 0.156
 ```
 - for part bonus i'm use the burning with specific number(3)
-  ```shell
+```bash
 ./fractol 3
 ```
+
 
